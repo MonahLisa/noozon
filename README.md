@@ -2,22 +2,18 @@
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
     </a>
-    <h1 align="center">Yii 2 Basic Project Template</h1>
+    <h1 align="center">No Ozon</h1>
     <br>
 </p>
 
-Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-rapidly creating small projects.
+Приложение для интернет-магазина «No Ozon» на базе [Yii 2](http://www.yiiframework.com/).
 
-The template contains the basic features including user login/logout and a contact page.
-It includes all commonly used configurations that would allow you to focus on adding new
-features to your application.
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
 [![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
 [![build](https://github.com/yiisoft/yii2-app-basic/workflows/build/badge.svg)](https://github.com/yiisoft/yii2-app-basic/actions?query=workflow%3Abuild)
 
-DIRECTORY STRUCTURE
+Структура проекта
 -------------------
 
       assets/             contains assets definition
@@ -34,39 +30,39 @@ DIRECTORY STRUCTURE
 
 
 
-REQUIREMENTS
+ТРЕБОВАНИЯ
 ------------
 
-The minimum requirement by this project template that your Web server supports PHP 7.4.
+Минимальное требование этого проекта, чтобы ваш веб-сервер поддерживал PHP 7.4.
 
 
-INSTALLATION
+УСТАНОВКА
 ------------
 
-### Install via Composer
+### Установка через Composer
 
-If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
-at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
+Если у вас нет [Composer](http://getcomposer.org/), вы можете установить его, следуя инструкциям
+по адресу [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
 
-You can then install this project template using the following command:
+Затем вы можете установить этот шаблон проекта, используя следующую команду:
 
 ~~~
 composer create-project --prefer-dist yiisoft/yii2-app-basic basic
 ~~~
 
-Now you should be able to access the application through the following URL, assuming `basic` is the directory
-directly under the Web root.
+Теперь вы должны иметь возможность получить доступ к приложению по следующему URL-адресу, предполагая, что "basic" - это каталог
+непосредственно под Webroot.
 
 ~~~
 http://localhost/basic/web/
 ~~~
 
-### Install from an Archive File
+### Установка из архивного файла
 
-Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to
-a directory named `basic` that is directly under the Web root.
+Извлеките архивный файл, загруженный с [yiiframework.com](http://www.yiiframework.com/download/) в
+каталог с именем `basic`, который находится непосредственно под веб-корнем.
 
-Set cookie validation key in `config/web.php` file to some random secret string:
+Установите ключ проверки файлов cookie в `config/web.php ` файл в какую-то случайную секретную строку:
 
 ```php
 'request' => [
@@ -75,13 +71,13 @@ Set cookie validation key in `config/web.php` file to some random secret string:
 ],
 ```
 
-You can then access the application through the following URL:
+Затем вы можете получить доступ к приложению по следующему URL-адресу:
 
 ~~~
 http://localhost/basic/web/
 ~~~
 
-
+<!--
 ### Install with Docker
 
 Update your vendor packages
@@ -103,14 +99,14 @@ You can then access the application through the following URL:
 **NOTES:** 
 - Minimum required Docker engine version `17.04` for development (see [Performance tuning for volume mounts](https://docs.docker.com/docker-for-mac/osxfs-caching/))
 - The default configuration uses a host-volume in your home directory `.docker-composer` for composer caches
+-->
 
-
-CONFIGURATION
+КОНФИГУРАЦИЯ
 -------------
 
-### Database
+### База данных
 
-Edit the file `config/db.php` with real data, for example:
+Отредактируйте файл `config/db.php `с реальными данными, например:
 
 ```php
 return [
@@ -122,12 +118,12 @@ return [
 ];
 ```
 
-**NOTES:**
-- Yii won't create the database for you, this has to be done manually before you can access it.
-- Check and edit the other files in the `config/` directory to customize your application as required.
-- Refer to the README in the `tests` directory for information specific to basic application tests.
+** ПРИМЕЧАНИЯ:**
+- Yii не создаст базу данных для вас, это должно быть сделано вручную, прежде чем вы сможете получить к ней доступ.
+- Проверьте и отредактируйте другие файлы в каталоге `config/`, чтобы настроить ваше приложение по мере необходимости.
+- Обратитесь к README в каталоге "тесты" для получения информации, относящейся к базовым тестам приложений.
 
-
+<!--
 TESTING
 -------
 
@@ -231,3 +227,4 @@ vendor/bin/codecept run functional,unit --coverage --coverage-html --coverage-xm
 ```
 
 You can see code coverage output under the `tests/_output` directory.
+-->
