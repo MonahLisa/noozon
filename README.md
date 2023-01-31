@@ -121,10 +121,11 @@ return [
     'charset' => 'utf8',
 ];
 ```
+<h3><a href="README files/zoneozon.sql" file>Скачать базу данных</a><h3>
 
 ### Диаграмма базы данных
 <img src="README files/DB NOOZON.png">
-<h2>Вы также можете изучить диаграмму базы данных <a href="https://www.figma.com/file/Di4dYvDleGpochnv9TQ9RS/NOOZON-DATA-BASE?node-id=0%3A1&t=82q8BVLk4IM0BTsG-1">по ссылке</a></h2>
+<h3>Вы также можете изучить диаграмму базы данных <a href="https://www.figma.com/file/Di4dYvDleGpochnv9TQ9RS/NOOZON-DATA-BASE?node-id=0%3A1&t=82q8BVLk4IM0BTsG-1">по ссылке</a></h3>
 
 
 ** ПРИМЕЧАНИЯ:**
