@@ -120,6 +120,7 @@ return [
 
 ### Диаграмма базы данных
 <img src="README files/DB NOOZON.png">
+<p>Вы также можете изучить диаграмму базы данных <a href="https://www.figma.com/file/Di4dYvDleGpochnv9TQ9RS/NOOZON-DATA-BASE?node-id=0%3A1&t=82q8BVLk4IM0BTsG-1">по ссылке</a></p>
 
 
 ** ПРИМЕЧАНИЯ:**
