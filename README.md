@@ -111,12 +111,16 @@ You can then access the application through the following URL:
 ```php
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+    'dsn' => 'mysql:host=localhost;dbname=zoneozon',
     'username' => 'root',
-    'password' => '1234',
+    'password' => 'root',
     'charset' => 'utf8',
 ];
 ```
+
+### Диаграмма базы данных
+<img src="README files/DB NOOZON.png">
+
 
 ** ПРИМЕЧАНИЯ:**
 - Yii не создаст базу данных для вас, это должно быть сделано вручную, прежде чем вы сможете получить к ней доступ.
