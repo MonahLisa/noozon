@@ -121,7 +121,7 @@ return [
     'charset' => 'utf8',
 ];
 ```
-<h3><a href="README files/zoneozon.sql" file>Скачать базу данных</a><h3>
+<h3><a href="README files/zoneozon.sql" download="">Скачать базу данных</a><h3>
 
 ### Диаграмма базы данных
 <img src="README files/DB NOOZON.png">
