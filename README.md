@@ -38,6 +38,10 @@
 
 УСТАНОВКА
 ------------
+- Клонировать проект
+- composer install - установка зависимостей
+- yii migrate - миграция базы данных
+- web/index.php - запуск проекта
 
 ### Установка через Composer
 
@@ -111,12 +115,17 @@ You can then access the application through the following URL:
 ```php
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+    'dsn' => 'mysql:host=localhost;dbname=zoneozon',
     'username' => 'root',
-    'password' => '1234',
+    'password' => 'root',
     'charset' => 'utf8',
 ];
 ```
+
+### Диаграмма базы данных
+<img src="README files/DB NOOZON.png">
+<h2>Вы также можете изучить диаграмму базы данных <a href="https://www.figma.com/file/Di4dYvDleGpochnv9TQ9RS/NOOZON-DATA-BASE?node-id=0%3A1&t=82q8BVLk4IM0BTsG-1">по ссылке</a></h2>
+
 
 ** ПРИМЕЧАНИЯ:**
 - Yii не создаст базу данных для вас, это должно быть сделано вручную, прежде чем вы сможете получить к ней доступ.
