@@ -24,7 +24,8 @@ use yii\widgets\ActiveForm;
 <!---->
 <!--    --><?//= $form->field($model, 'created_by')->textInput() ?>
 
-<!--    --><?//= $form->field($model, 'manager_list_id')->textInput() ?>
+
+    <?= $form->field($model, 'manager_list_id')->dropDownList((\yii\helpers\ArrayHelper::map(\app\models\ManagerList::find()->all(), 'id', 'manager_id')))->label(''); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

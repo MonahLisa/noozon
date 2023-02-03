@@ -299,6 +299,11 @@ class SiteController extends Controller
 //        $permit->description = 'Право быть менеджером компании';
 //        Yii::$app->authManager->add($permit);
 
+
+//        $role_a = Yii::$app->authManager->getRole('admin');
+//        $permit = Yii::$app->authManager->getPermission('updateUser');
+//        Yii::$app->authManager->addChild($role_a, $permit);
+
         return 123;
     }
 

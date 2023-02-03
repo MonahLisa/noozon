@@ -28,9 +28,8 @@ class ManagerList extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'manager_id'], 'required'],
-            [['id', 'manager_id'], 'integer'],
-            [['id'], 'unique'],
+            [['manager_id'], 'required'],
+            [[ 'manager_id'], 'integer'],
             [['manager_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['manager_id' => 'id']],
         ];
 
@@ -64,6 +63,35 @@ class ManagerList extends \yii\db\ActiveRecord
      */
     public function getManager()
     {
+//        $userRole = Yii::$app->authManager->getRole('manager');
+//        Yii::$app->authManager->assign($userRole, \Yii::$app->user->id);
         return $this->hasOne(User::class, ['id' => 'manager_id']);
     }
+
+    public function createManager()
+    {
+        if (!$this->validate()) {
+            return null;
+        }
+        $manager = $this->hasOne(User::class, ['id' => 'manager_id']);
+        $manager->manager_id = $this->manager_id;
+        return $manager->save() ? $manager : null;
+    }
+
+//    public function signup()
+//    {
+//        if (!$this->validate()) {
+//            return null;
+//        }
+//        $user = new User();
+//        $user->login = $this->login;
+//        $user->email = $this->email;
+//        $user->phone = $this->phone;
+//        $user->city_id = $this->city_id;
+//        $user->currency_id = $this->currency_id;
+//        $user->setPassword($this->password);
+//        $user->generateAuthKey();
+//        return $user->save() ? $user : null;
+//    }
+
 }

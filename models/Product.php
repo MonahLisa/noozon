@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\BlameableBehavior;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "product".
@@ -39,14 +42,30 @@ class Product extends \yii\db\ActiveRecord
     {
         return 'product';
     }
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => BlameableBehavior::class,
+                'createdByAttribute' => 'created_by',
+                'updatedByAttribute' => false,
 
+            ],
+            [
+                'class' => TimestampBehavior::class,
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value' => new Expression('NOW()'),
+            ],
+        ];
+    }
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['name', 'description', 'discount', 'is_discounted', 'specifications', 'way_to_use', 'rating', 'company_id', 'created_at', 'updated_at', 'created_by', 'price', 'new_price', 'category_id'], 'required'],
+                [['name', 'description', 'is_discounted', 'company_id', 'price', 'category_id'], 'required'],
             [['description', 'specifications', 'way_to_use'], 'string'],
             [['discount', 'is_discounted', 'company_id', 'created_by', 'category_id'], 'integer'],
             [['rating', 'price', 'new_price'], 'number'],

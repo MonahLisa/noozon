@@ -4,9 +4,15 @@ namespace app\controllers;
 
 use app\models\ManagerList;
 use app\models\ManagerListSearch;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+
+use Yii;
+use yii\filters\AccessControl;
+use yii\web\Response;
+
 
 /**
  * ManagerListController implements the CRUD actions for ManagerList model.
@@ -68,19 +74,58 @@ class ManagerListController extends Controller
     public function actionCreate()
     {
         $model = new ManagerList();
+//        if ($model->load(Yii::$app->request->post())) {
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+//            if ($manager = $model->createManager()) {
+            if ($model->load($this->request->post()) ) {
+                $model->save();
+
+
+              $userRole = Yii::$app->authManager->getRole('manager');
+              Yii::$app->authManager->assign($userRole, $model->manager_id);
+
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
         }
+//        $userRole = Yii::$app->authManager->getRole('manager');
+//        Yii::$app->authManager->assign($userRole, \Yii::$app->user->id);
 
         return $this->render('create', [
             'model' => $model,
         ]);
     }
+
+//    public function actionSignup()
+//    {
+//        $model = new SignupForm();
+//        if ($model->load(Yii::$app->request->post())) {
+//            if ($user = $model->signup()) {
+//                if (Yii::$app->getUser()->login($user)) {
+//                    $userProfile = new UserProfile();
+//                    $userProfile->user_id = \Yii::$app->user->id;
+//                    $userProfile->first_name = 'Неизвестный';
+//                    $userProfile->last_name = 'Пользователь';
+//                    $favourite = new Favourite();
+//                    $favourite->user_id = \Yii::$app->user->id;
+//
+//                    $userRole = Yii::$app->authManager->getRole('buyer');
+//                    Yii::$app->authManager->assign($userRole, \Yii::$app->user->id);
+//
+//                    $userProfile->save();
+//                    $favourite->save();
+//
+//
+//                    return $this->redirect(["user-profile/index"]);
+//                }
+//            }
+//        }
+//        return $this->render('signup', [
+//            'model' => $model,
+//        ]);
+//    }
 
     /**
      * Updates an existing ManagerList model.
@@ -112,8 +157,11 @@ class ManagerListController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+//        $userRole = Yii::$app->authManager->getRole('manager');
+//        Yii::$app->authManager->remove($userRole, $id);
 
-        return $this->redirect(['index']);
+        return $this->redirect(['manager-list/index']);
     }
 
     /**

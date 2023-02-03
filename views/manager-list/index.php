@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var app\models\ManagerListSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Manager Lists';
+$this->title = 'Менеджеры';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="manager-list-index">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Manager List', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить менеджера', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'manager_id',
             [
                 'class' => ActionColumn::className(),

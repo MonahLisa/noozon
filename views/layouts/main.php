@@ -39,10 +39,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Главная', 'url' => ['/site/index'], 'visible' => !Yii::$app->user->isGuest],
 //            ['label' => 'About', 'url' => ['/site/about']],
 //            ['label' => 'Contact', 'url' => ['/site/contact']],
-            ['label' => 'Добавить товар', 'url' => ['/product/create'], 'visible' => Yii::$app->user->can("addProduct")],
+            ['label' => 'Добавить товар', 'url' => ['/product/index'], 'visible' => Yii::$app->user->can("addProduct")],
+            ['label' => 'Список менеджеров', 'url' => ['/manager-list/index'], 'visible' => Yii::$app->user->can("updateUser")],
             ['label' => 'Создать компанию', 'url' => ['/company/create'], 'visible' => Yii::$app->user->can("createCompany")],
             ['label' => 'Профиль', 'url' => ['/user-profile/index'], 'visible' => !Yii::$app->user->isGuest],
             Yii::$app->user->isGuest

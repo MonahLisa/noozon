@@ -2,6 +2,10 @@
 namespace app\models;
 use Yii;
 use yii\base\Model;
+use yii\behaviors\BlameableBehavior;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
+
 /**
  * Signup form
  */
@@ -15,7 +19,17 @@ class SignupForm extends Model
     public $city_id;
     public $photo_url;
 
-
+//    public function behaviors()
+//    {
+//        return [
+//            [
+//                'class' => TimestampBehavior::class,
+//                'createdAtAttribute' => 'created_at',
+//                'updatedAtAttribute' => 'updated_at',
+//                'value' => new Expression('NOW()'),
+//            ],
+//        ];
+//    }
 
     /**
      * @inheritdoc
@@ -28,6 +42,7 @@ class SignupForm extends Model
             ['login', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Этот логин уже занят.'],
             ['login', 'string', 'min' => 2, 'max' => 255],
             ['email', 'trim'],
+            [['created_at', 'updated_at'], 'safe'],
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],

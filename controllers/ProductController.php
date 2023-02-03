@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use app\models\Product;
 use app\models\ProductSearch;
+use yii\behaviors\BlameableBehavior;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -27,6 +29,7 @@ class ProductController extends Controller
                         'delete' => ['POST'],
                     ],
                 ],
+
             ]
         );
     }
@@ -70,8 +73,10 @@ class ProductController extends Controller
         $model = new Product();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                $model->save();
+             //  VarDumper::dump($model->errors,10,true);
+               return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();

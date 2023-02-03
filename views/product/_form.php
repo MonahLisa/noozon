@@ -27,7 +27,7 @@ use yii\widgets\ActiveForm;
 
 <!--    --><?//= $form->field($model, 'rating')->textInput() ?>
 
-    <?= $form->field($model, 'company_id')->dropDownList((\yii\helpers\ArrayHelper::map(\app\models\Company::find()->all(), 'id', 'title')))->label(''); ?>
+    <?= $form->field($model, 'company_id')->dropDownList((\yii\helpers\ArrayHelper::map(\app\models\Company::find()->all(), 'id', 'name')))->label(''); ?>
 
 <!--    --><?//= $form->field($model, 'created_at')->textInput() ?>
 
@@ -48,7 +48,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'price')->textInput(['class' => 'form-control form-control-lg', 'placeholder' => 'Цена'])->label(''); ?>
 
-    <?= $form->field($model, 'new_price')->textInput(['class' => 'form-control form-control-lg', 'placeholder' => 'Новая цена'])->label(''); ?>
+<!--    --><?//= $form->field($model, 'new_price')->textInput(['class' => 'form-control form-control-lg', 'placeholder' => 'Новая цена'])->label(''); ?>
 
     <?= $form->field($model, 'category_id')->dropDownList((\yii\helpers\ArrayHelper::map(\app\models\Category::find()->all(), 'id', 'title')))->label(''); ?>
 
