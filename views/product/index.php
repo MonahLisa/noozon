@@ -44,11 +44,26 @@ $this->params['breadcrumbs'][] = $this->title;
             //'specifications:ntext',
             //'way_to_use:ntext',
 //            'rating',
-            'company_id',
+     
+//            [
+//                'attribute' => 'company_id',
+//                'value' => function ($model) {
+//                    return $model->company->name;
+//                },
+//            ],
+            [
+                'attribute' => 'company_id',
+                'value' => function ($model) {
+                    return Html::a($model->company->name, Url::to(['product/view', 'id' => $model->id]));
+                },
+                'format' => 'html',
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\Company::find()->all(), 'id', 'name')
+            ],
             [
                 'attribute' => 'created_at',
                 'format' => ['date', 'php:d.m.Y']
             ],
+
             //'updated_at',
             //'created_by',
             'price',
