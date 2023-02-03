@@ -33,17 +33,43 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'description:ntext',
             'discount',
-            'is_discounted',
+
+            [
+                'attribute' => 'is_discounted',
+                'value' => function ($model) {
+                    return $model->is_discounted ? 'Да' : 'Нет';
+                },
+                'filter' => [1 => "Да", 0 => "Нет"]
+            ],
             //'specifications:ntext',
             //'way_to_use:ntext',
-            'rating',
+//            'rating',
             'company_id',
-            //'created_at',
+            [
+                'attribute' => 'created_at',
+                'format' => ['date', 'php:d.m.Y']
+            ],
             //'updated_at',
             //'created_by',
             'price',
             //'new_price',
-            'category_id',
+//            [
+//                'attribute' => 'category_id',
+//                'value' => function ($model) {
+//                    return $model->category->title;
+//                },
+//            ],
+
+            [
+                'attribute' => 'category_id',
+                'value' => function ($model) {
+                    return Html::a($model->category->title, Url::to(['product/view', 'id' => $model->id]));
+                },
+                'format' => 'html',
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\Category::find()->all(), 'id', 'title')
+            ],
+
+
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Product $model, $key, $index, $column) {

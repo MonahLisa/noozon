@@ -86,7 +86,7 @@ class Product extends \yii\db\ActiveRecord
             'name' => 'Название',
             'description' => 'Описание',
             'discount' => 'Скидка',
-            'is_discounted' => 'Есть скидка',
+            'is_discounted' => 'Есть ли скидка',
             'specifications' => 'Технические характеристики',
             'way_to_use' => 'Способ применения',
             'rating' => 'Рейтинг',

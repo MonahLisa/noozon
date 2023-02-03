@@ -17,8 +17,9 @@ class CategorySearch extends Category
     public function rules()
     {
         return [
-            [['id', 'p_id'], 'integer'],
-            [['title'], 'safe'],
+            [['id', 'p_id', 'price', 'is_discounted'], 'integer'],
+            [['title', 'created_at','category_id'], 'safe'],
+
         ];
     }
 
@@ -40,7 +41,10 @@ class CategorySearch extends Category
      */
     public function search($params)
     {
-        $query = Category::find();
+//        $query = Category::find();
+        $query = Product::find();
+
+        $query->joinWith("category");
 
         // add conditions that should always apply here
 
@@ -49,6 +53,24 @@ class CategorySearch extends Category
         ]);
 
         $this->load($params);
+
+        $dataProvider->setSort([
+            'attributes' => [
+//                'id',
+                'title',
+                'description',
+                'discount',
+                'is_discounted',
+                'company_id',
+                'created_at',
+                'price',
+                'category_id' => [
+                    'asc' => ['category.title' =>SORT_ASC],
+                    'desc' => ['category.title' =>SORT_DESC],
+                    'default' =>SORT_ASC
+                ],
+            ]
+        ]);
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -60,9 +82,16 @@ class CategorySearch extends Category
         $query->andFilterWhere([
             'id' => $this->id,
             'p_id' => $this->p_id,
+            'price' => $this->price,
+            'created_at' => $this->created_at,
+            'is_discounted' => $this->is_discounted,
         ]);
+        $query
+            ->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'category.title', $this->category_id])
+        ;
 
-        $query->andFilterWhere(['like', 'title', $this->title]);
+//        $query->andFilterWhere(['like', 'title', $this->title]);
 
         return $dataProvider;
     }
